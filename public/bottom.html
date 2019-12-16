@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+  <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+  <meta name="apple-mobile-web-app-title" content="">
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-touch-fullscreen" content="yes" />
+  <meta http-equiv="Cache-Control" content="no-siteapp, no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-itunes-app" content="app-id=myAppStoreID, affiliate-data=myAffiliateData, app-argument=myURL">
+  <meta name="format-detection" content="telephone=no,address=no,email=no">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <link rel="icon" href="./favicon.ico">
+  <meta name="referrer" content="no-referrer" />
+  <meta name="robots" content="noindex" />
+  <meta name="robots" content="nofollow" />
+  <meta name="robots" content="none" />
+  <meta name="googlebot" content="noindex, nofollow" />
+  <meta name="baiduspider" content="noarchive" />
+  <title>好价鼻子</title>
+  <style type="text/css">
+    * {
+      padding: 0;
+      margin: 0;
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      font-family: 'SourceHanSansSC-Medium,SourceHanSansSC-Regular,PingFangSC-Regular"';
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    }
+
+    .bottom {
+      height: 100vh;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+      flex-direction: column;
+      -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+      justify-content: space-between;
+    }
+
+    .bottom-top {
+      -webkit-box-flex: 1;
+      -ms-flex: 1;
+      flex: 1;
+    }
+
+    .bottom-bottom {
+      height: 13.333vw;
+      width: 100vw;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+      border-top: 1px solid #e7e7e7;
+      background-color: #fff;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: horizontal;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+      flex-direction: row;
+      -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+      justify-content: space-between;
+      text-align: center;
+    }
+
+    .bottom-text {
+      font-family: "PingFangSC-Regular";
+      margin-top: 1vw;
+      font-size: 2.4vw;
+      line-height: 3.2vw;
+      color: rgba(153, 153, 153, 1);
+    }
+
+    .home .img {
+      margin: 2vw auto 0;
+      background: url('./images/tab_index.png') no-repeat center;
+      background-size: 100% 100%;
+      width: 5.6vw;
+      height: 5.6vw;
+    }
+
+    .home.on .bottom-text {
+      color: rgba(251, 44, 104, 1);
+    }
+
+    .home.on .img {
+      margin: 2vw auto 0;
+      background: url('./images/tab_index_on.png') no-repeat center;
+      background-size: 100% 100%;
+      -webkit-animation: checkMenu .3s ease-in-out;
+      animation: checkMenu .3s ease-in-out;
+      width: 5.6vw;
+      height: 5.6vw;
+    }
+
+    .hot .img {
+      margin: 2vw auto 0;
+      width: 5.6vw;
+      height: 5.33vw;
+      background: url('./images/tab_hot.png') no-repeat center;
+      background-size: 100% 100%;
+    }
+
+    .hot.on .bottom-text {
+      color: rgba(251, 44, 104, 1);
+    }
+
+    .hot.on .img {
+      -webkit-animation: checkMenu .3s ease-in-out;
+      animation: checkMenu .3s ease-in-out;
+      margin: 2vw auto 0;
+      width: 5.6vw;
+      height: 5.33vw;
+      background: url('./images/tab_hot_on.png') no-repeat center;
+      background-size: 100% 100%;
+    }
+
+    .right .img {
+      margin: 2vw auto 0;
+      width: 5.6vw;
+      height: 5.6vw;
+      background: url('./images/tab_right.png') no-repeat center;
+      background-size: 100% 100%;
+    }
+
+    .right.on .bottom-text {
+      color: rgba(251, 44, 104, 1);
+    }
+
+    .right.on .img {
+      -webkit-animation: checkMenu .3s ease-in-out;
+      animation: checkMenu .3s ease-in-out;
+      margin: 2vw auto 0;
+      width: 5.6vw;
+      height: 5.6vw;
+      background: url('./images/tab_right_on.png') no-repeat center;
+      background-size: 100% 100%;
+    }
+
+    .mine .img {
+      margin: 2vw auto 0;
+      width: 7.46vw;
+      height: 5.06vw;
+      background: url('./images/tab_mine.png') no-repeat center;
+      background-size: 7.46vw 5.06vw;
+    }
+
+    .mine.on .bottom-text {
+      color: rgba(251, 44, 104, 1);
+    }
+
+    .mine.on .img {
+      -webkit-animation: checkMenu .3s ease-in-out;
+      animation: checkMenu .3s ease-in-out;
+      margin: 2vw auto 0;
+      width: 7.46vw;
+      height: 5.06vw;
+      background: url('./images/tab_mine_on.png') no-repeat center;
+      background-size: 100% 100%;
+    }
+
+    .home,
+    .hot,
+    .right,
+    .mine {
+      -webkit-box-flex: 1;
+      -ms-flex: 1;
+      flex: 1;
+      text-align: center;
+    }
+
+    @keyframes checkMenu {
+      0% {
+        -webkit-transform: scale(.8) rotate(0);
+        transform: scale(.8) rotate(0);
+      }
+
+      33% {
+        -webkit-transform: scale(1.2) rotate(-10deg);
+        transform: scale(1.2) rotate(-10deg);
+      }
+
+      50% {
+        -webkit-transform: scale(1.4) rotate(0);
+        transform: scale(1.4) rotate(0);
+      }
+
+      66% {
+        -webkit-transform: scale(1.2) rotate(10deg);
+        transform: scale(1.2) rotate(10deg);
+      }
+
+      100% {
+        -webkit-transform: scale(1) rotate(0);
+        transform: scale(1) rotate(0);
+      }
+    }
+
+    @-webkit-keyframes checkMenu {
+      0% {
+        -webkit-transform: scale(.8) rotate(0);
+        transform: scale(.8) rotate(0);
+      }
+
+      33% {
+        -webkit-transform: scale(1.2) rotate(-10deg);
+        transform: scale(1.2) rotate(-10deg);
+      }
+
+      50% {
+        -webkit-transform: scale(1.4) rotate(0);
+        transform: scale(1.4) rotate(0);
+      }
+
+      66% {
+        -webkit-transform: scale(1.2) rotate(10deg);
+        transform: scale(1.2) rotate(10deg);
+      }
+
+      100% {
+        -webkit-transform: scale(1) rotate(0);
+        transform: scale(1) rotate(0);
+      }
+    }
+
+    @-moz-keyframes checkMenu {
+      0% {
+        -webkit-transform: scale(.8) rotate(0);
+        transform: scale(.8) rotate(0);
+      }
+
+      33% {
+        -webkit-transform: scale(1.2) rotate(-10deg);
+        transform: scale(1.2) rotate(-10deg);
+      }
+
+      50% {
+        -webkit-transform: scale(1.4) rotate(0);
+        transform: scale(1.4) rotate(0);
+      }
+
+      66% {
+        -webkit-transform: scale(1.2) rotate(10deg);
+        transform: scale(1.2) rotate(10deg);
+      }
+
+      100% {
+        -webkit-transform: scale(1) rotate(0);
+        transform: scale(1) rotate(0);
+      }
+    }
+
+    @-o-keyframes checkMenu {
+      0% {
+        -webkit-transform: scale(.8) rotate(0);
+        transform: scale(.8) rotate(0);
+      }
+
+      33% {
+        -webkit-transform: scale(1.2) rotate(-10deg);
+        transform: scale(1.2) rotate(-10deg);
+      }
+
+      50% {
+        -webkit-transform: scale(1.4) rotate(0);
+        transform: scale(1.4) rotate(0);
+      }
+
+      66% {
+        -webkit-transform: scale(1.2) rotate(10deg);
+        transform: scale(1.2) rotate(10deg);
+      }
+
+      100% {
+        -webkit-transform: scale(1) rotate(0);
+        transform: scale(1) rotate(0);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="bottom">
+    <div class="bottom-top"></div>
+    <div class="bottom-bottom">
+      <div class="home menu on">
+        <div class="img"></div>
+        <div class="bottom-text">首页</div>
+      </div>
+      <div class="hot menu">
+        <div class="img"></div>
+        <div class="bottom-text">爆款</div>
+      </div>
+      <div class="right menu">
+        <div class="img"></div>
+        <div class="bottom-text">权益</div>
+      </div>
+      <div class="mine menu">
+        <div class="img"></div>
+        <div class="bottom-text">我的</div>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript">
+    // 菜单信息
+    var menuInfos = [
+      {
+        name: '首页',
+        class: 'home',
+        url: '/index.html#/home',
+        sub: null
+      },
+      {
+        name: '爆款',
+        class: 'hot',
+        url: '/index.html#/hot',
+        sub: null
+      },
+      {
+        name: '权益',
+        class: 'right',
+        url: '/index.html#/right',
+        sub: null
+      },
+      {
+        name: '我的',
+        class: 'mine',
+        url: '/index.html#/mine',
+        sub: null
+      }
+    ]
+
+    function getQueryVariable(variable) {
+      // 获取url参数
+      var query = window.location.search.substring(1);
+      var vars = query.split("&");
+      for (var i = 0; i < vars.length; i++) {
+        var pair = vars[i].split("=");
+        if (pair[0] == variable) { return pair[1]; }
+      }
+      return (false);
+    }
+
+    function awakenApp(flag) {
+      // 唤起App操作
+      var all = window.plus.webview.all()
+      var createdMenu = menuInfos.filter(function(item){
+        return item.sub !=null
+      })
+      var activeIndex = document.querySelector('.menu.on').index
+      if (all.length - createdMenu.length === 1) {
+        menuInfos[activeIndex].sub.evalJS('showSearch()')
+      } else {
+        all[all.length - 1].evalJS('showSearch()')
+      }
+      window.plus.webview.getWebviewById('home').evalJS('getPDDredpacketUrl')
+    }
+
+    function uuid() {
+      // 生成唯一uuid
+      var s = [];
+      var hexDigits = "0123456789abcdef";
+      for (var i = 0; i < 36; i++) {
+        s[i] = hexDigits.substr(Math.floor(Math.random() * 0x10), 1);
+      }
+      s[14] = "4";  // bits 12-15 of the time_hi_and_version field to 0010
+      s[19] = hexDigits.substr((s[19] & 0x3) | 0x8, 1);  // bits 6-7 of the clock_seq_hi_and_reserved to 01
+      s[8] = s[13] = s[18] = s[23] = "-";
+      var uuid = s.join("");
+      return uuid;
+    }
+
+    function createWebview() {
+      // 创建首页webview
+      window.plus = plus
+      var bottom = document.querySelector('.bottom-bottom').clientHeight
+      var all = window.plus.webview.all()
+      var cur = window.plus.webview.currentWebview()
+      // var safeBottom = cur.getSafeAreaInsets().deviceBottom
+      // 关闭除了第一个webview外所有webview
+      if (all.length > 1) {
+        for (var i = 0; i < all.length; i++) {
+          if (all[i] !== cur) {
+            all[i].close('none')
+          }
+        }
+      }
+      if (islogin !== true) {
+        menuInfos[0].url += '?islogin=true'
+      }
+      // 创建home页面webview
+      menuInfos[0].sub = window.plus.webview.create(menuInfos[0].url, menuInfos[0].class, {
+        top: '0',
+        bottom: bottom + 'px',
+        backgroundColorTop: '#fb2c68',
+        bounce: 'vertical'
+      })
+      menuInfos[0].sub.setPullToRefresh({
+        support: true
+      })
+      cur.append(menuInfos[0].sub)
+      window.plus.navigator.setStatusBarBackground('#fb2c68')
+      window.plus.navigator.setStatusBarStyle('light')
+      var islogin
+      try {
+        islogin = JSON.parse(getQueryVariable('islogin'))
+      } catch (e) {
+        islogin = getQueryVariable('islogin')
+      }
+      document.addEventListener('resume', awakenApp, false)
+
+      // 原index页面逻辑,只加载一次就够了
+      // 全屏展示
+      plus.navigator.setFullscreen(false)
+      // 竖屏锁定
+      plus.screen.lockOrientation('portrait-primary')
+      // 保存设备信息
+      if (plus.device.uuid) {
+        localStorage.setItem('device', JSON.stringify(plus.device))
+      } else {
+        localStorage.setItem('device', JSON.stringify({ imei: " ", imsi: [], model: "iPhoneSimulator", vendor: "Apple", uuid: uuid() }))
+      }
+      if (plus.os) {
+        localStorage.setItem('os', JSON.stringify(plus.os))
+      }
+      if (plus.runtime) {
+        localStorage.setItem('runtime', JSON.stringify(plus.runtime))
+      }
+    }
+
+    function checkMenu(index) {
+      var menus = document.querySelectorAll('.menu');
+      var activeIndex = -1
+      for (var j = 0; j < menus.length; j++) {
+        if (/on/.test(menus[j].className)) {
+          activeIndex = j
+        }
+        menus[j].className = menus[j].className.replace(' on', '')
+      }
+      menus[index].className += ' on'
+      // 当前webview切换到当前webview不进行逻辑变更
+      if (menuInfos[index].sub === menuInfos[activeIndex].sub) {
+        return
+      }
+      // 检测webview是否已创建，动态按需创建webview
+      if (menuInfos[index].sub) {
+        window.plus.webview.hide(menuInfos[activeIndex].sub)
+        window.plus.webview.show(menuInfos[index].sub)
+        if (menuInfos[index].class === 'mine' || menuInfos[index].class === 'right') {
+          menuInfos[index].sub.evalJS('update()')
+        }
+      } else {
+        var bottom = document.querySelector('.bottom-bottom').clientHeight
+        var cur = window.plus.webview.currentWebview()
+        // var safeBottom = cur.getSafeAreaInsets().deviceBottom
+        window.plus.webview.hide(menuInfos[activeIndex].sub)
+        menuInfos[index].sub = window.plus.webview.create(menuInfos[index].url, menuInfos[index].class, {
+          top: '0px',
+          bottom: bottom + 'px',
+          backgroundColorTop: '#fb2c68',
+          bounce: 'vertical'
+        })
+        menuInfos[index].sub.setPullToRefresh({
+          support: true
+        })
+        cur.append(menuInfos[index].sub)
+      }
+    }
+
+    window.onload = function () {
+      var menus = document.querySelectorAll('.menu');
+      for (var i = 0; i < menus.length; i++) {
+        menus[i].index = i
+        menus[i].onclick = function () {
+          var activeIndex = -1
+          for (var j = 0; j < menus.length; j++) {
+            if (/on/.test(menus[j].className)) {
+              activeIndex = j
+            }
+            menus[j].className = menus[j].className.replace(' on', '')
+          }
+          menus[this.index].className += ' on'
+          var bottom = document.querySelector('.bottom-bottom').clientHeight
+          var cur = window.plus.webview.currentWebview()
+          // var safeBottom = cur.getSafeAreaInsets().deviceBottom
+          // 当前webview切换到当前webview不进行逻辑变更
+          if (menuInfos[this.index].sub === menuInfos[activeIndex].sub) {
+            return
+          }
+          // 检测webview是否已创建，动态按需创建webview
+          if (menuInfos[this.index].sub) {
+            window.plus.webview.hide(menuInfos[activeIndex].sub)
+            window.plus.webview.show(menuInfos[this.index].sub)
+            if (menuInfos[this.index].class === 'mine' || menuInfos[this.index].class === 'right') {
+              menuInfos[this.index].sub.evalJS('update()')
+            }
+          } else {
+            window.plus.webview.hide(menuInfos[activeIndex].sub)
+            menuInfos[this.index].sub = window.plus.webview.create(menuInfos[this.index].url, menuInfos[this.index].class, {
+              top: '0px',
+              bottom: bottom + 'px',
+              backgroundColorTop: '#fb2c68',
+              bounce: 'vertical'
+            })
+            menuInfos[this.index].sub.setPullToRefresh({
+              support: true
+            })
+            cur.append(menuInfos[this.index].sub)
+          }
+        }
+      }
+      if (window.plus) {
+        createWebview()
+      } else {
+        document.addEventListener('plusready', createWebview, false)
+      }
+    }
+  </script>
+</body>
+
+</html>

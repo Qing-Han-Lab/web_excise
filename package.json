@@ -1,0 +1,53 @@
+{
+  "name": "biz.price",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "vue-cli-service serve --open",
+    "dev:prd": "vue-cli-service serve --mode=production",
+    "app": "vue-cli-service build --mode=production --watch",
+    "build": "vue-cli-service build",
+    "build:dev": "vue-cli-service build --mode=development",
+    "watch:app": "concurrently \"node start\" \"npm run app\"",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "browserslist": "^4.7.1",
+    "caniuse-lite": "^1.0.30001002",
+    "core-js": "^2.6.10",
+    "dayjs": "^1.8.16",
+    "js-base64": "^2.5.1",
+    "js-md5": "^0.7.3",
+    "mint-ui": "^2.2.13",
+    "portfinder": "^1.0.25",
+    "qrcode": "^1.4.2",
+    "qrcodejs2": "0.0.2",
+    "vue": "^2.6.10",
+    "vue-router": "^3.1.3",
+    "vuex": "^3.1.1"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.12.1",
+    "@vue/cli-plugin-eslint": "^3.12.1",
+    "@vue/cli-service": "^3.12.1",
+    "@vue/eslint-config-standard": "^4.0.0",
+    "axios": "^0.19.0",
+    "babel-eslint": "^10.0.3",
+    "babel-plugin-component": "^1.1.1",
+    "canvas2image": "^1.0.5",
+    "concurrently": "^4.1.2",
+    "cssnano": "^4.1.10",
+    "eslint": "^5.16.0",
+    "eslint-plugin-vue": "^5.2.3",
+    "html2canvas": "^1.0.0-rc.5",
+    "js-cookie": "^2.2.1",
+    "node-sass": "^4.12.0",
+    "postcss-px-to-viewport": "^1.1.1",
+    "qs": "^6.9.0",
+    "sass-loader": "^7.3.1",
+    "vue-awesome-swiper": "^3.1.3",
+    "vue-lazyload": "^1.3.3",
+    "vue-template-compiler": "^2.6.10",
+    "vuex-persistedstate": "^2.5.4"
+  }
+}

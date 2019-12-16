@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+  <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+  <meta name="apple-mobile-web-app-title" content="">
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-touch-fullscreen" content="yes" />
+  <meta http-equiv="Cache-Control" content="no-siteapp, no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-itunes-app" content="app-id=myAppStoreID, affiliate-data=myAffiliateData, app-argument=myURL">
+  <meta name="format-detection" content="telephone=no,address=no,email=no">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <link rel="icon" href="./favicon.ico">
+  <meta name="referrer" content="no-referrer" />
+  <meta name="robots" content="noindex" />
+  <meta name="robots" content="nofollow" />
+  <meta name="robots" content="none" />
+  <meta name="googlebot" content="noindex, nofollow" />
+  <meta name="baiduspider" content="noarchive" />
+  <title>好价鼻子</title>
+</head>
+
+<body>
+  <div id="app"></div>
+  <!-- built files will be auto injected -->
+  <script type="text/javascript">
+    function plusReady() {
+      // Android处理返回键
+      window.plus = plus
+      var first = null
+      plus.key.addEventListener('backbutton', function () {
+        if(window.third){
+          var all = plus.webview.all()
+          if (all[all.length - 1] === window.third) {
+            window.third.close()
+            window.third = null
+            return
+          }
+        }
+        plus.nativeUI.closeWaiting()
+        var w = plus.webview.currentWebview();
+        if (w.id !== 'home' && w.id !== 'right' && w.id !== 'hot' && w.id !== 'mine') {
+          w.close()
+        } else {
+          if (!first) {
+            plus.nativeUI.toast("1秒内连续按2次返回退出好价鼻子", { duration: "long" });
+            first = new Date().getTime();
+            setTimeout(function () {
+              first = null;
+            }, 1000)
+          } else {
+            if (new Date().getTime() - first < 1000) {
+              plus.runtime.quit()
+            }
+          }
+        }
+      }, false);
+
+      var MODULE_NAME = 'Biz';
+      var BRIDGE = window.plus.bridge
+      /**
+       * @param callback {function | null}
+       * @returns {string}
+       */
+      function wrapCallback(callback) {
+        return BRIDGE.callbackId(typeof callback !== 'function' ? null : callback)
+      }
+      /**
+       * @param command {string}
+       * @param url {string}
+       * @param callback {function | null}
+       * @returns {ChildProcess | never | RegExpExecArray}
+       */
+      function exec(command, url, callback) {
+        var callbackID = wrapCallback(callback)
+        return BRIDGE.exec(MODULE_NAME, command, [callbackID, url])
+      }
+      var Biz = {
+        /**
+         * 打开拼多多。返回数据中data字段中仅code字段Android和IOS都有，其他字段可能不一样。
+         * @param url {string}
+         * @param callback {function(data:{success:boolean, errorMsg:string | null, data:{code:number, msg:string | null} | null}) | null}
+         */
+        openPinduoduo: function (url, callback) {
+          console.info("pingduoduo === " + url)
+          return exec("openPinduoduo", url, callback)
+        },
+        /**
+         * 打开京东。返回数据中data字段中仅code字段Android和IOS都有，其他字段可能不一样。
+         * @param url {string}
+         * @param callback {function(data:{success:boolean, errorMsg:string | null, data:{code:number, msg:string | null} | null}) | null}
+         */
+        openJD: function (url, callback) {
+          return exec("openJD", url, callback)
+        },
+        /**
+         * 打开淘宝。返回数据中data字段中仅code字段Android和IOS都有，其他字段可能不一样。
+         * @param url {string}
+         * @param callback {function(data:{success:boolean, errorMsg:string | null, data:{code:number, msg:string | null} | null}) | null}
+         */
+        openTaobao: function (url, callback) {
+          return exec("openTaobao", url, callback)
+        },
+        /**
+         * 淘宝登录。受权数据保存在返回数据中的data字段，data对象中字段Android和IOS可能不一样，可能需要适配。
+         * @param callback {function(data:{success:boolean, errorMsg:string | null, data:any | null}) | null}
+         */
+        taobaoLogin: function (callback) {
+          var callbackID = wrapCallback(callback)
+          return BRIDGE.exec(MODULE_NAME, "taobaoLogin", [callbackID])
+        },
+        /**
+         * 获取推送regid方法
+        */
+        getPushRegId: function(callback){
+          var callbackID = wrapCallback(callback)
+          return BRIDGE.exec(MODULE_NAME, "getPushRegId", [callbackID])
+        }
+      }
+      window.plus.Biz = Biz
+      var Build, Manifest, MainActivity, ArrPermissions
+      if (plus.os.name.toLocaleLowerCase() === 'android') {
+        Build = plus.android.importClass("android.os.Build");
+        Manifest = plus.android.importClass("android.Manifest");
+        MainActivity = plus.android.runtimeMainActivity();
+        ArrPermissions = [
+          Manifest.permission.READ_EXTERNAL_STORAGE,
+          Manifest.permission.WRITE_EXTERNAL_STORAGE,
+          Manifest.permission.CAMERA,
+          Manifest.permission.READ_PHONE_STATE,
+          Manifest.permission.WRITE_EXTERNAL_STORAGE
+        ]
+      }
+      //var context=main.getApplicationContext(); //未用到,在此仅供参考
+
+      function PermissionCheck(permission) {
+        if (Build.VERSION.SDK_INT >= 23) {
+          if (MainActivity.checkSelfPermission(permission) == -1) {
+            return false;
+          }
+        }
+        return true;
+      }
+
+      function PermissionChecks(Arr) {
+        var HasPermission = true;
+        for (var index in Arr) {
+          var permission = Arr[index];
+          //如果此处没有权限,则是用户拒绝了
+          if (!PermissionCheck(permission)) {
+            HasPermission = false;
+            break;
+          }
+        }
+        return HasPermission;
+      }
+
+      function PermissionRequest(Arr) {
+        var REQUEST_CODE_CONTACT = 101;
+        if (Build.VERSION.SDK_INT >= 23) {
+          MainActivity.requestPermissions(Arr, REQUEST_CODE_CONTACT);
+        }
+      }
+
+      //如果没有权限，则申请
+      if (!PermissionChecks(ArrPermissions)) {
+        PermissionRequest(ArrPermissions)
+      } else { //如果拥有权限，那么干点啥吧^_^
+        // plus.nativeUI.toast("授权失效，会影响您的使用", { duration: 2000 });
+      }
+    }
+    if (window.plus) {
+      plusReady();
+    } else {
+      document.addEventListener('plusready', plusReady, false);
+    }
+  </script>
+</body>
+
+</html>
