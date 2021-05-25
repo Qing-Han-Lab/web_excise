@@ -12,7 +12,7 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "browserslist": "^4.7.1",
+    "browserslist": "^4.16.5",
     "caniuse-lite": "^1.0.30001002",
     "core-js": "^2.6.10",
     "dayjs": "^1.8.16",
